@@ -5,7 +5,12 @@
 	<li class="collection-item indigo white-text" [hidden]="!loading">
 		Cargando...
 	</li>
-	<li class="collection-item"*ngFor="let repo of repos">
+	<li class="collection-item red accent-2 white-text" [hidden]="loading">
+		<h3>{{selectedRepo.name}}</h3>
+		<p>{{selectedRepo.description}}</p>
+	</li>
+	<li class="collection-item"*ngFor="let repo of repos"
+	(click)="setRepo(repo)">
 		<h3>{{repo.name}}</h3>
 		<p>{{repo.description}}</p>
 	</li>
