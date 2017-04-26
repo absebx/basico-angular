@@ -15,6 +15,10 @@ export class ReposComponent implements OnInit {
   repos  : any = [];
   loading : boolean = true;
   selectedRepo : IRepo;
+  newRepo : IRepo = {
+    name:"",
+    description: ""
+  }
 
   constructor() { }
   ngOnInit() {
@@ -34,6 +38,14 @@ export class ReposComponent implements OnInit {
 
   setRepo(repo){
   	this.selectedRepo = repo; 
+  }
+
+  addNewRepo(){
+    this.repos.unshift(this.newRepo);
+    this.newRepo = {
+      name: "",
+      description: ""
+    }
   }
 
 }
