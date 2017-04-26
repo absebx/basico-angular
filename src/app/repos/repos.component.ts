@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ReposService} from './repos.service';
 
 
 
@@ -14,14 +14,24 @@ export class ReposComponent implements OnInit {
 
   repos  : any = [];
   loading : boolean = true;
-  selectedRepo : IRepo;
+  selectedRepo : IRepo = {name:"",description:""};
   newRepo : IRepo = {
     name:"",
     description: ""
   }
 
-  constructor() { }
+  //inyeccion de dependencias del servicio creado
+  constructor(private reposService : ReposService) { }
   ngOnInit() {
+    this.reposService.getRepos().subscribe((data)=>{
+      this.repos = data.json();
+      this.selectedRepo = this.repos[0];
+      this.loading=false;
+    });
+
+
+
+    /*
   	this.selectedRepo = {
   		name : "Angulabner", 
   		description : "Proyecto de abner"
@@ -33,8 +43,10 @@ export class ReposComponent implements OnInit {
   		{name: "app de escritorio", description:"Proyecto de escritorio muy generico"}
   	];
   	this.loading=false;
-  	},500);
+  	},500);*/
   }
+
+
 
   setRepo(repo){
   	this.selectedRepo = repo; 
