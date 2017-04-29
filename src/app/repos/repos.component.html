@@ -22,12 +22,14 @@
 		<form (submit)="addNewRepo()">
 			<!--Es importante agregar propiedad "name" a los imputs para el ngModel-->
 			<div class="input-field">
-				<input type="text" name="name" placeholder="Nombre"
-				[(ngModel)]="newRepo.name">
+				<label for="name">Nombre</label>
+				<input type="text" name="name" class="validate"
+				[(ngModel)]="newRepo.name" required>
 			</div>
 			<div class="input-field">
-				<input type="text" name="description"placeholder="descripcion"
-				[(ngModel)]="newRepo.description">
+				<label for="description">Descripcion</label>
+				<input type="text" name="description" class="validate"
+				[(ngModel)]="newRepo.description" required>
 			</div>
 			<div class="input-field">
 				<input type="submit" value="Agregar" class="btn indigo">
